@@ -43,3 +43,12 @@ class BLSTM(BaseModel):
             weights['b4' ] = tf.get_variable("b4" , shape=[4 ],initializer=tf.zeros_initializer())
 
         return weights
+
+    def ccc(self, y_pred, y_true):
+        cov_xy = tf.reduce_mean(y_pred*y_true) - (tf.reduce_mean(y_pred) * tf.reduce_mean(y_true))
+        mean_x, var_x = tf.nn.moments(y_pred,0)
+        mean_y, var_y = tf.nn.moments(y_true,0)
+        return (2*cov_xy/(var_x + var_y + np.square(mean_x - mean_y)))
+
+    def ccc_err(self, y_pred, y_true):
+        return 1 - self.ccc(y_pred, y_true)
