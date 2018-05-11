@@ -64,3 +64,13 @@ class BLSTM(BaseModel):
         weighted_sum_y = self.get_cont_val(y,k,use_priors=False)
         weighted_sum_yp = self.get_cont_val(y_pred,k ,use_priors=False)
         return 1+tf.sqrt((tf.square(weighted_sum_y-weighted_sum_yp)))
+
+    def get_cont_val(self, y, k, method='weighted_sum', use_priors=True):
+        centers = self.data.kmeans[self.config.dim][k].cluster_centers_.flatten()
+        
+        if use_priors:
+            y /= self.data.priors[self.config.dim][k] # divide by the k_cluster priors
+            y /= tf.reshape(tf.reduce_sum(y,axis=1),[7500,1]) # renormalize
+
+        if method == 'weighted_sum':
+            return tf.reduce_sum(y*tf.constant(centers,dtype=tf.float32),axis=1)
