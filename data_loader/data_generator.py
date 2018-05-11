@@ -18,6 +18,26 @@ class DataGenerator:
         y6 = self.y[dim][subset][idx][6].reshape((self.config.sequence_length,6))
         y4 = self.y[dim][subset][idx][4].reshape((self.config.sequence_length,4))
 
+
+    def get_gt_cont(self, dim, subset, idx):
+        """ Loads GT for a specific session
+        Args:
+            dim: GT dimension, take values of 'arousal', or 'valence'
+            subset: dataset of the returned GT, take values of 'train', 'dev'
+            idx: session index, take values [1-9]
+
+        Returns:
+            numpy array of size (7500, 1) for the requested GT based on the args
+
+        """
+        gt = os.popen('cat %s/%s/%s_%d.arff'%(self.config.recola_root, dim, subset, idx)).read()
+        gt = gt.split('\n')[9:] # remove the heading attr
+        gt = gt[:7500] # get the first 7500 gtures
+        gt = [float(gt[i].split(',')[-1]) for i in range(len(gt))] # get the 3rd col for each raw as float
+        
+        gt = np.array(gt)
+        return gt.reshape(gt.shape[0],1)
+
     def next_batch(self, batch_size):
         idx = np.random.choice(500, batch_size)
         yield self.input[idx], self.y[idx]
