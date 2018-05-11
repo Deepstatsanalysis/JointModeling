@@ -10,3 +10,6 @@ class BLSTM(BaseModel):
         super(BLSTM, self).__init__(config, data)
         self.build_model()
         self.init_saver()
+    
+    def init_saver(self):
+        self.saver = tf.train.Saver(max_to_keep=self.config.max_to_keep)
