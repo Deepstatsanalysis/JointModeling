@@ -74,3 +74,6 @@ class BLSTM(BaseModel):
 
         if method == 'weighted_sum':
             return tf.reduce_sum(y*tf.constant(centers,dtype=tf.float32),axis=1)
+
+    def norm(slef, x):
+        return x / tf.reshape(tf.reduce_sum(x,1),shape=(7500,1))
