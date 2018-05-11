@@ -76,4 +76,14 @@ class BLSTM(BaseModel):
             return tf.reduce_sum(y*tf.constant(centers,dtype=tf.float32),axis=1)
 
     def norm(slef, x):
-        return x / tf.reshape(tf.reduce_sum(x,1),shape=(7500,1))
+        return x / tf.reshape(tf.reduce_sum(x,1),shape=(7500,1))    
+
+    def modified_CE(self, logits=None, labels=None, k=None, use_priors=False):
+        scaled_logits = logits - tf.reshape(tf.reduce_max(logits,1),shape=(7500,1))
+        normalized_logits = scaled_logits - tf.reshape(tf.reduce_logsumexp(scaled_logits,1),shape=(7500,1))
+
+        if use_priors:
+            normalized_logits -= tf.log(np.array(self.data.priors[self.config.dim][k],dtype=np.float32))
+            normalized_logits -= tf.reshape(tf.reduce_logsumexp(normalized_logits,1),shape=(7500,1))
+
+        return tf.reduce_mean(-tf.reduce_sum(labels*normalized_logits,1))
