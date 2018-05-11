@@ -274,3 +274,9 @@ class BLSTM(BaseModel):
             normalized_logits -= tf.reshape(tf.reduce_logsumexp(normalized_logits,1),shape=(7500,1))
 
         return tf.reduce_mean(-tf.reduce_sum(labels*normalized_logits,1))
+
+    def get_valid_grads(self, grads):
+        # return the first None value tensor
+        for i in grads[0:11]:
+            if i[0] != None:
+                return i[0]
