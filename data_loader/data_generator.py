@@ -4,9 +4,24 @@ import numpy as np
 class DataGenerator:
     def __init__(self, config):
         self.config = config
-        # load data here
-        self.input = np.ones((500, 784))
-        self.y = np.ones((500, 10))
+
+        self.input = {}
+        if self.config.audio_video_feat:
+            self.input['train'] = np.load('%s/audio_vido_feat_train_norm.npy'%config.dataset_root).item()
+            self.input['dev'] = np.load('%s/audio_vido_feat_dev_norm.npy'%config.dataset_root).item()
+            self.input['test'] = np.load('%s/audio_vido_feat_test_norm.npy'%config.dataset_root).item()
+        else:
+            self.input['train'] = np.load('%s/train_reshape_norm.npy'%config.dataset_root).item()
+            self.input['dev'] = np.load('%s/dev_reshape_norm.npy'%config.dataset_root).item()
+            self.input['test'] = np.load('%s/test_reshape_norm.npy'%config.dataset_root).item()
+        self.priors = np.load('%s/priors.npy'%config.dataset_root).item() # priors[dim][k]
+
+        self.y = np.load('%s/gt_%s.npy'%(config.dataset_root,self.config.gt)).item() # y[dim][subset][idx][k]
+        if self.config.gt_priors:
+            self.y = self.apply_priors_on_gt(self.y)
+
+        self.kmeans = np.load('%s/kmeans_ordered.npy'%config.dataset_root).item() # kmeans[subset][k]
+
 
     def get_batch(self, dim, subset, idx):
         x = self.input[subset]['%s_%d'%(subset, idx)].T.reshape((1,self.config.sequence_length,self.config.n_input))
