@@ -2,15 +2,26 @@ import tensorflow as tf
 
 
 class BaseTrain:
-    def __init__(self, sess, model, data, config, logger):
+    def __init__(self, sess, model, data, config,logger):
+
+        self.config = config
         self.model = model
         self.logger = logger
-        self.config = config
         self.sess = sess
         self.data = data
-        self.init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
-        self.sess.run(self.init)
+        self.best_ccc = 0
+        self.best_iter = self.config.init_epoch*9
+        self.learning_rate = np.array(self.config.learning_rate)
 
+        self.init_var()
+        
+        my_mkdir('../weights')
+        my_mkdir('../weights/%s'%(self.config.exp_name))
+
+    def init_var(self):
+        init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
+        self.sess.run(init)
+        
     def train(self):
         for cur_epoch in range(self.model.cur_epoch_tensor.eval(self.sess), self.config.num_epochs + 1, 1):
             self.train_epoch()
