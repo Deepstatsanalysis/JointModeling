@@ -78,3 +78,12 @@ class DataGenerator:
     def next_batch(self, batch_size):
         idx = np.random.choice(500, batch_size)
         yield self.input[idx], self.y[idx]
+
+    def apply_priors_on_gt(self,gt):
+        # gt[dim][subset][idx][k]
+        dim = self.config.dim
+        for subset in ['train', 'dev']:
+            for idx in range(1,10):
+                for k in [4,6,8,10]:
+                    gt[dim][subset][idx][k] = self.norm(gt[dim][subset][idx][k] / self.priors[dim][k])
+        return gt
