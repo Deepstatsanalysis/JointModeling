@@ -79,7 +79,6 @@ class BLSTM(BaseModel):
 
                 self.outputs = self.fc
                 
-            else:
             with tf.name_scope('Y_pred'):
 
                 self.y_logits10 = [0]
