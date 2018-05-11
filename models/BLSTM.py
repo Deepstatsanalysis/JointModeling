@@ -52,3 +52,10 @@ class BLSTM(BaseModel):
 
     def ccc_err(self, y_pred, y_true):
         return 1 - self.ccc(y_pred, y_true)
+        
+    def get_final_layer_len(self):
+        if self.config.fc_path == 2:
+            return self.config.n_fc1+self.config.n_fc2
+        elif self.config.fc_path == 1:
+            return self.config.n_fc
+        return 2*self.config.n_hidden
