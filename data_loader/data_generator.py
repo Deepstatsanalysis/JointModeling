@@ -1,5 +1,5 @@
 import numpy as np
-
+import os
 
 class DataGenerator:
     def __init__(self, config):
@@ -32,6 +32,8 @@ class DataGenerator:
         y8 = self.y[dim][subset][idx][8].reshape((self.config.sequence_length,8))
         y6 = self.y[dim][subset][idx][6].reshape((self.config.sequence_length,6))
         y4 = self.y[dim][subset][idx][4].reshape((self.config.sequence_length,4))
+
+        yield x, y10, y8, y6, y4
 
 
     def get_gt_cont(self, dim, subset, idx):
@@ -74,10 +76,6 @@ class DataGenerator:
 
     def norm(self, pred):
         return pred / np.sum(pred,axis=1,keepdims=1)
-    
-    def next_batch(self, batch_size):
-        idx = np.random.choice(500, batch_size)
-        yield self.input[idx], self.y[idx]
 
     def apply_priors_on_gt(self,gt):
         # gt[dim][subset][idx][k]
