@@ -56,7 +56,10 @@ class DataGenerator:
                
         gt = np.array(gt).flatten()
         return gt.reshape(gt.shape[0],1)
-        
+
+    def norm(self, pred):
+        return pred / np.sum(pred,axis=1,keepdims=1)
+    
     def next_batch(self, batch_size):
         idx = np.random.choice(500, batch_size)
         yield self.input[idx], self.y[idx]
