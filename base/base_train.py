@@ -1,5 +1,9 @@
 import tensorflow as tf
+import os
+from tqdm import tqdm
+import numpy as np
 
+from utils.utils import my_mkdir
 
 class BaseTrain:
     def __init__(self, sess, model, data, config,logger):
