@@ -21,11 +21,13 @@ class BaseTrain:
     def init_var(self):
         init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
         self.sess.run(init)
-        
+
     def train(self):
         for cur_epoch in range(self.model.cur_epoch_tensor.eval(self.sess), self.config.num_epochs + 1, 1):
-            self.train_epoch()
+            self.epoch('train')
+            self.epoch('dev')
             self.sess.run(self.model.increment_cur_epoch_tensor)
+            self.model.save(self.sess, '../weights/%s/model'%(self.config.exp_name))
 
     def train_epoch(self):
         """
