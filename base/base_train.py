@@ -29,7 +29,7 @@ class BaseTrain:
             self.sess.run(self.model.increment_cur_epoch_tensor)
             self.model.save(self.sess, '../weights/%s/model'%(self.config.exp_name))
 
-    def train_epoch(self):
+    def epoch(self):
         """
         implement the logic of epoch:
         -loop over the number of iterations in the config and call the train step
@@ -37,7 +37,7 @@ class BaseTrain:
         """
         raise NotImplementedError
 
-    def train_step(self):
+    def step(self):
         """
         implement the logic of the train step
         - run the tensorflow session
