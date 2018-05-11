@@ -9,7 +9,6 @@ from models.BLSTM import BLSTM
 from testers.tester import Tester
 from trainers.trainer import Trainer
 from trainers.trainer_stage2 import TrainerStage2
-from trainers.trainer_reg import TrainerReg
 from utils.config import process_config
 from utils.dirs import create_dirs
 from utils.logger import Logger
