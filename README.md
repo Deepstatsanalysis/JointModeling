@@ -99,7 +99,7 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 
 **fc_act**: [default = 'tanh'] This paramter holds the type of the FC layer activation function. The value is string. Possible values ('tanh', 'sigmoid')
 
-**fcs_num**: [default = 1] This paramter holds the number of the FC layers after BLSTM model. The value is integer. Note: set to 0 to ignore the FC layer.
+**fcs_num**: [default = 0] This paramter holds the number of the FC layers after BLSTM model. The value is integer. Note: set to 0 to ignore the FC layer.
 
 **n_fc**: [default = 16] This paramter holds number of FC units. The value is integer.
 
