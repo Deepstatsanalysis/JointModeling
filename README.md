@@ -2,9 +2,9 @@
 Source code for Joint Modeling, created by Ehab AlBadawy at UAlbany
 
 ### Contents
-1. [Requirements] (#requirements)
-2. [Usage] (#usage)
-3. [Instructions] (#instructions)
+1. [Requirements](#requirements)
+2. [Usage](#usage)
+3. [Instructions](#instructions)
 
 ### Requirements
 
