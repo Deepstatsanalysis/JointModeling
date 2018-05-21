@@ -105,8 +105,16 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 
 **target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values ('argmax', 'argmax_priors', 'weights_sum', 'weighted_sum_priots', 'reg')
 
-**losses*:
-
+**losses**: This paramter holds the losses to be used for training. The value is array of strings. Possible values :
+- 'loss4': loss for k-means clustring where k = 4.
+- 'loss6': loss for k-means clustring where k = 6.
+- 'loss8': loss for k-means clustring where k = 8.
+- 'loss10': loss for k-means clustring where k = 10.
+- 'rmse': RMAE loss for regreesion node.
+- 'ccc_err': CCC loss for the regression node.
+- 'y_out_rmse': RMSE loss for the final node.
+- 'y_out_cccerr': CCC loss for the final node.
+Note: the model will only consider the losses that are exsit in the array (e.g. set `losses: ['loss4', 'loss6', 'loss8', 'loss10']` if you want to train the model for classifcation task only using the 4 k-means models). 
 
 
 
