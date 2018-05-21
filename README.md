@@ -85,37 +85,27 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 
 **cost**: This paramters indicates what cost function is used. The value is string. Possible values (`argmax`, `norm`)
 
-**gt**: ##### [onehot]
-
-**ccc_diff** [default = -0.01] This paramter indicates the difference between the best CCC found in the 2nd stage and current CCC value, if the difference is lower that `ccc_diff`, the learning rate will be havled. The value is real number (float).
+**ccc_diff** [default = -0.01] This paramter indicates the difference between current CCC value and the best CCC found in the 2nd stage, if the difference is lower that `ccc_diff`, the learning rate will be havled. The value is real number (float).
 
 **reset_lr**: [default = True] This paramter is a flag for eaither resting the learning rate to the base learning rate `learning_rate` after a good CCC found in the 2nd stage or keep the current learning rate. The vale is boolean.
 
 **modified_CE**: [defaults = False] This paramter is a flag to either use the modified version of the cross entropy loss (set True if you want to apply priors on the network predictions). The value is boolean.
 
-**audio_video_feat**:  
+**audio_video_feat**: [defaults = False] This paramter is a flag for either to use the video features or not. The value is boolean.
 
-**alpha1**
+**alpha1**:[default = 1] This paramter holds the value of alpha1 in end-to-end model loss equation. The value is real number (float). Take values between 0 and 1.
 
-**alpha2**
+**alpha2**:[default = 1] This paramter holds the value of alpha2 in end-to-end model loss equation. The value is real number (float). Take values between 0 and 1.
 
-**fc_act**: [default = 'tanh']
+**fc_act**: [default = 'tanh'] This paramter holds the type of the FC layer activation function. The value is string. Possible values ('tanh', 'sigmoid')
 
-**n_fc**
+**fcs_num**: [default = 1] This paramter holds the number of the FC layers after BLSTM model. The value is integer. Note: set to 0 to ignore the FC layer.
 
-**clf_bias**
+**n_fc**: [default = 16] This paramter holds number of FC units. The value is integer.
 
-**fcs_num**
+**target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values ('argmax', 'argmax_priors', 'weights_sum', 'weighted_sum_priots', 'reg')
 
-**fc_path**
-
-**gt_priors**
-
-**target_ccc** This paramter indicates the current CCC to optimize the CCC value for the 2nd stage. The value is a string. Possible values ('argmax', 'argmax_priors', 'weights_sum', 'weighted_sum_priots', 'reg')
-
-**losses**
-
-**priors**
+**losses*:
 
 
 
