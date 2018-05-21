@@ -50,18 +50,7 @@ class BLSTM(BaseModel):
                 self.outputs, _, _= tf.contrib.rnn.stack_bidirectional_dynamic_rnn(self.lstm_fw_cells, self.lstm_bw_cells, self.X, dtype=tf.float32)
                 self.outputs = tf.concat(self.outputs, 2)[0]
 
-
-            if self.config.fc_path == 2:
-                with tf.name_scope('fc1'):
-                    self.fc1 = tf.matmul(self.outputs, self.weights['fc1_w']) + self.weights['fc1_b' ]
-                    self.fc1 = tf.sigmoid(self.fc1)
-                with tf.name_scope('fc2'):
-                    self.fc2 = tf.matmul(self.outputs, self.weights['fc2_w']) + self.weights['fc2_b' ]
-
-                with tf.name_scope('fc1fc2'):
-                    self.outputs = tf.transpose(tf.transpose(tf.concat([self.fc1, self.fc2],axis=1)))
-
-            elif self.config.fc_path == 1:
+            if self.config.fcs_num > 0:
                 self.fc = self.outputs
                 fc_input = 2*self.config.n_hidden
                 for i in range(self.config.fcs_num):
