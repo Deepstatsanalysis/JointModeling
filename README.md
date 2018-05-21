@@ -114,6 +114,7 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 - 'ccc_err': CCC loss for the regression node.
 - 'y_out_rmse': RMSE loss for the final node.
 - 'y_out_cccerr': CCC loss for the final node.
+
 Note: the model will only consider the losses that are exsit in the array (e.g. set `losses: ['loss4', 'loss6', 'loss8', 'loss10']` if you want to train the model for classifcation task only using the 4 k-means models). 
 
 
