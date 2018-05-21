@@ -44,6 +44,6 @@ def default_values(config):
     config['fc_path']              = 0     if not 'fc_path'             in config.keys() else config['fc_path']
     config['clf_bias']             = 0     if not 'clf_bias'            in config.keys() else config['clf_bias']
     config['audio_video_feat']     = 0     if not 'audio_video_feat'    in config.keys() else config['audio_video_feat']
-    config['self.config.clf_bias'] = 1     if not 'self.config.clf_bias'in config.keys() else config['self.config.clf_bias']
+    config['clf_bias'] = 1     if not 'clf_bias'in config.keys() else config['self.config.clf_bias']
 
     return config
