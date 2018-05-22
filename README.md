@@ -103,7 +103,8 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 
 **n_fc**: [default = 16] This paramter holds number of FC units. The value is integer.
 
-**target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values - 'argmax_priors': for clf model
+**target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values:
+- 'argmax_priors': for clf model
 - 'reg': for reg model
 - 'y_out': for end to end model
 
