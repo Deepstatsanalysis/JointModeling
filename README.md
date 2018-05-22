@@ -103,7 +103,10 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 
 **n_fc**: [default = 16] This paramter holds number of FC units. The value is integer.
 
-**target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values ('argmax', 'argmax_priors', 'weights_sum', 'weighted_sum_priots', 'reg')
+**target_ccc**: This paramter indicates the current CCC to optimize for the 2nd stage. The value is a string. Possible values:
+- 'argmax_priors': for clf model
+- 'reg': for reg model
+- 'y_out': for end to end model
 
 **losses**: This paramter holds the losses to be used for training. The value is array of strings. Possible values :
 - 'loss4': loss for k-means clustring where k = 4.
