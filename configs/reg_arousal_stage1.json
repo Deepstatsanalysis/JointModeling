@@ -5,7 +5,7 @@
     "learning_rate": 0.02,
     "n_input": 160,
     "n_hidden": 80,
-    "n_layers": 5,
+    "n_layers": 7,
     "dim": "arousal",
     "dataset_root": "/network/rit/lab/kimlab/Ehab/database/RECOLA/kaldi",
     "recola_root": "/network/rit/lab/kimlab/Data/RECOLA/ratings_gold_standard",
