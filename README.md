@@ -113,7 +113,7 @@ the configuration file is used to tell Tensorflow what hyper-paramters you want 
 - 'loss6': loss for k-means clustring where k = 6.
 - 'loss8': loss for k-means clustring where k = 8.
 - 'loss10': loss for k-means clustring where k = 10.
-- 'rmse': RMAE loss for regreesion node.
+- 'rmse': RMSE loss for regreesion node.
 - 'ccc_err': CCC loss for the regression node.
 - 'y_out_rmse': RMSE loss for the final node.
 - 'y_out_cccerr': CCC loss for the final node.
@@ -128,5 +128,5 @@ Note: the model will only consider the losses that are exsit in the array (e.g. 
 To train your model, you need to define the model hyper-paramters in config file (e.g. `configs/example.json`) and run the following cmd from `mains` director
 
 ```
-python main.py --config=../configs/example.json # replace example.json with your config file
+python main.py --config=../configs/clf_arousal_stage1.json # replace clf_arousal_stage1.json with your config file
 ```
