@@ -29,6 +29,7 @@ def process_config(jsonfile):
 def default_values(config):
 
     config['target_cluster']       = -1                 if not 'target_cluster'      in config.keys() else config['target_cluster'] 
+    config['rater_id']             = -1                 if not 'rater_id'            in config.keys() else config['rater_id'] 
     config['gt_priors']            = False              if not 'gt_priors'           in config.keys() else config['gt_priors']
     config['priors']               = False              if not 'priors'              in config.keys() else config['priors']
     config['reg']                  = False              if not 'reg'                 in config.keys() else config['reg']
@@ -54,6 +55,7 @@ def default_values(config):
     config['subset']               = 'joint_modling'    if not 'subset'              in config.keys() else config['subset']
     config['log_dir']              = 'logs'             if not 'log_dir'             in config.keys() else config['log_dir']
     config['max_length']           = 7500               if not 'max_length'          in config.keys() else config['max_length']
+    config['sequence_length']      = 7500               if not 'sequence_length'     in config.keys() else config['sequence_length']
     config['learning_rate']        = 0.02               if not 'learning_rate'       in config.keys() else config['learning_rate']
     config['num_epochs']           = 20                 if not 'num_epochs'          in config.keys() else config['num_epochs']
 
