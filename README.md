@@ -21,14 +21,18 @@ You need `TensorFlow`. Please refer to [TensorFLow instalation instructions](htt
 │   └── base_train.py   - this file contains the abstract class of the trainer.
 │   └── base_test.py    - this file contains the abstract class of the tester.
 │
-│
 ├── model               - this folder contains the BLSTM model implementation.
 │   └── BLSTM.py
 │
-│
-├── trainer             - this folder contains trainers classes for stage1 and stage2.
+├── trainers             - this folder contains trainers classes for stage1 and stage2.
 │   └── trainer.py
 │   └── trainer_stage2.py
+│   
+├── testers              - this folder contains testers classes that handle testing predictions.
+│   └── tester.py
+│   
+├── notebooks            - this folder contains notebooks for different experiments.
+│   └── Testing.ipynb
 │   
 ├──  mains              - here's the main to run your experiments based on the config file.
 │    └── main.py        - main file that is responsible for the whole pipeline.
