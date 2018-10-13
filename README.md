@@ -1,7 +1,6 @@
-# Joint Modeling
-Source code for Joint Modeling, created by Ehab AlBadawy at UAlbany
+# [Joint Discrete and Continuous Emotion Prediction UsingEnsemble and End-to-End Approaches](https://dl.acm.org/citation.cfm?id=3242972)
 
-[Joint Discrete and Continuous Emotion Prediction UsingEnsemble and End-to-End Approaches](https://dl.acm.org/citation.cfm?id=3242972)
+Source code for Joint Modeling, created by Ehab AlBadawy at UAlbany
 
 ### Contents
 1. [Requirements](#requirements)
