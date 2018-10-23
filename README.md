@@ -1,6 +1,6 @@
 # [Joint Discrete and Continuous Emotion Prediction UsingEnsemble and End-to-End Approaches](https://dl.acm.org/citation.cfm?id=3242972)
 
-Source code for Joint Modeling, created by Ehab AlBadawy at UAlbany
+Authors: Ehab A. AlBadawy and Yelin Kim
 
 ### Contents
 1. [Requirements](#requirements)
@@ -134,4 +134,22 @@ To train your model, you need to define the model hyper-paramters in config file
 
 ```
 python main.py --config=../configs/clf_arousal_stage1.json # replace clf_arousal_stage1.json with your config file
+```
+
+### How to Cite
+```
+@inproceedings{kim2018joint,
+ author = {Albadawy, Ehab A. and Kim, Yelin},
+ title = {Joint Discrete and Continuous Emotion Prediction Using Ensemble and End-To-End Approaches},
+ booktitle = {Proceedings of the 18th ACM International Conference on Multimodal Interaction},
+ series = {ICMI 2018},
+ year = {2018},
+ isbn = { 978-1-4503-5692-3},
+ location = {Boulder, Colorado, USA},
+ pages = {366--375},
+ numpages = {10},
+ doi = {https://doi.org/10.1145/3242969.3242972},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
 ```
